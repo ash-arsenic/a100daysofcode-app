@@ -23,6 +23,7 @@ public class ProblemDescription extends AppCompatActivity implements CheckAnswer
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_problem_description);
+
         problem = (Problem) getIntent().getSerializableExtra("PROBLEM");
         day_num = getIntent().getIntExtra("DAY", 0);
 
@@ -73,11 +74,13 @@ public class ProblemDescription extends AppCompatActivity implements CheckAnswer
         if(problem.getAnswer().equals(ans)) {
             ProblemsDatabase db = new ProblemsDatabase(this);
             if(db.update(new Problem(problem.getTitle(), problem.getStatement(), problem.getAnswer(), problem.getDifficulty(), 1), day_num)) {
-                Toast.makeText(this, "Correct Answer", Toast.LENGTH_SHORT).show();
+                ResponseDialog dialog = new ResponseDialog(true);
+                dialog.show(getSupportFragmentManager(), "Correct Answer");
                 status.setText("Correct");
             }
         } else {
-            Toast.makeText(this, "Wrong Answer", Toast.LENGTH_SHORT).show();
+            ResponseDialog dialog = new ResponseDialog(false);
+            dialog.show(getSupportFragmentManager(), "Wrong Answer");
         }
     }
 }

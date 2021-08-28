@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="50dp"
     tools:context=".ProblemDescription">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_margin="10dp"
         android:id="@+id/problem_rl"
+        android:padding="10dp"
+        android:background="@color/primaryColor"
         android:layout_alignParentLeft="true">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Day 4"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/nunito_bold"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
@@ -27,20 +30,29 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
             android:text="00:00:00"
+            android:textSize="28sp"
+            android:fontFamily="@font/nunito_extra_bold"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/problem_day"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:id="@+id/problem_time_left"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/problem_status_description"
-            android:gravity="center_horizontal"/>
+            android:gravity="center"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Completed"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="Not Completed"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:fontFamily="@font/nunito_bold"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
@@ -48,23 +60,36 @@
 
     </RelativeLayout>
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/problem"
-        android:textSize="22sp"
-        android:id="@+id/problem_statement"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_above="@+id/check_answer_btn"
         android:layout_below="@+id/problem_rl"
-        android:layout_marginTop="20dp"/>
+        android:layout_alignParentStart="true"
+        android:padding="10dp"
+        android:layout_alignParentLeft="true">
+
+        <TextView
+            android:id="@+id/problem_statement"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/problem"
+            android:textSize="22sp" />
+
+    </ScrollView>
+
+
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/check_answer_btn"
         android:text="Check Answer"
+        android:fontFamily="@font/nunito_regular"
         android:textSize="30sp"
+        android:layout_margin="10dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"/>

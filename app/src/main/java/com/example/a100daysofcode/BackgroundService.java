@@ -43,7 +43,7 @@ public class BackgroundService extends Service {
 
         updateNotification(0);
         retrieveData();
-        timer = new CountDownTimer(15000, 1000) {
+        timer = new CountDownTimer(30000, 1000) {
             @Override
             public void onTick(long l) {
                 localIntent.setAction("counter");
@@ -54,7 +54,7 @@ public class BackgroundService extends Service {
             @Override
             public void onFinish() {
                 count++;
-                if (count == 4) {
+                if (count == 10) {
                     updateData(count);
                     stopSelf();
                 } else {
@@ -70,9 +70,12 @@ public class BackgroundService extends Service {
     }
 
     public void updateData(int index) {
+        retrieveData();
         Problem problem = problems.get(index-1);
-        ProblemsDatabase db = new ProblemsDatabase(this);
-        db.update(new Problem(problem.getTitle(), problem.getStatement(), problem.getAnswer(), problem.getDifficulty(), 2), index);
+        if(problem.isStatus() == 0) {
+            ProblemsDatabase db = new ProblemsDatabase(this);
+            db.update(new Problem(problem.getTitle(), problem.getStatement(), problem.getAnswer(), problem.getDifficulty(), 2), index);
+        }
     }
 
     public void retrieveData() {
@@ -102,7 +105,7 @@ public class BackgroundService extends Service {
         PendingIntent intent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
         Notification notification[] = {new NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("Day "+String.valueOf(day+1))
-                .setContentText("Not Completed")
+                .setContentText("Who wants to be GOD when you can be a PROGRAMMER")
                 .setSmallIcon(R.drawable.ic_ac)
                 .setContentIntent(intent)
                 .build()

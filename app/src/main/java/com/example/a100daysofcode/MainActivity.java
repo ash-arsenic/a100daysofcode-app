@@ -2,7 +2,9 @@ package com.example.a100daysofcode;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,12 +21,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-//import com.google.gson.Gson;
-//import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         SharedPreferences sharedPreferences = getSharedPreferences(PREFERENCES, MODE_PRIVATE);
 
         firstTime = sharedPreferences.getBoolean(FIRST_TIME, true);
@@ -71,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new DaysAdapter(tillToday);
         daysListRv.setAdapter(mAdapter);
         daysListRv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true));
-
+        daysListRv.addItemDecoration(new DividerItemDecoration(daysListRv.getContext(), DividerItemDecoration.VERTICAL));
 
 //          Starting background activity first time app runs
 //        Intent service = null;
@@ -84,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
             startService(service);
         }
 
-        timeLeft.setOnClickListener(new View.OnClickListener() {
+        ImageButton refresh = findViewById(R.id.refresh);
+        refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int extra = sharedPreferences.getInt(BackgroundService.COUNT, 0);
@@ -94,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 for(int i=0; i<=extra; i++) {
                     tillToday.add(mData.get(i));
                 }
+                Toast.makeText(MainActivity.this, "Updated", Toast.LENGTH_SHORT).show();
                 mAdapter.notifyDataSetChanged();
             }
         });

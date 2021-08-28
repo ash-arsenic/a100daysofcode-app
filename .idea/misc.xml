@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_problem_description.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/check_answer_layout.xml" value="0.190625" />
+        <entry key="app/src/main/res/drawable/ic_refresh.xml" value="0.20677083333333332" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_problem_description.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/check_answer_layout.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/correct_answer_dialog.xml" value="0.33" />
         <entry key="app/src/main/res/layout/days_list_vh.xml" value="0.25" />
       </map>
     </option>

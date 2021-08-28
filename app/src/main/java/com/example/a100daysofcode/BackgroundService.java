@@ -43,7 +43,7 @@ public class BackgroundService extends Service {
 
         updateNotification(0);
         retrieveData();
-        timer = new CountDownTimer(3700000, 1000) {
+        timer = new CountDownTimer(15000, 1000) {
             @Override
             public void onTick(long l) {
                 localIntent.setAction("counter");
@@ -70,7 +70,7 @@ public class BackgroundService extends Service {
     }
 
     public void updateData(int index) {
-        Problem problem = problems.get(index);
+        Problem problem = problems.get(index-1);
         ProblemsDatabase db = new ProblemsDatabase(this);
         db.update(new Problem(problem.getTitle(), problem.getStatement(), problem.getAnswer(), problem.getDifficulty(), 2), index);
     }

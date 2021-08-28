@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="220dp"
+    android:padding="5dp"
+    android:id="@+id/correct_answer_dialog_layout"
+    android:layout_height="220dp">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/right_answer_img"
+        android:src="@drawable/right_answer"
+        android:layout_gravity="center"
+        android:visibility="visible"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/wrong_answer_img"
+        android:src="@drawable/wrong_answer"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
+</LinearLayout>

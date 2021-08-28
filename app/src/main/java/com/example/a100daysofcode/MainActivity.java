@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         daysListRv = findViewById(R.id.days_list_rv);
         mAdapter = new DaysAdapter(tillToday);
         daysListRv.setAdapter(mAdapter);
-        daysListRv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true));
+        daysListRv.setLayoutManager(new LinearLayoutManager(this));
         daysListRv.addItemDecoration(new DividerItemDecoration(daysListRv.getContext(), DividerItemDecoration.VERTICAL));
 
 //          Starting background activity first time app runs
@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Toast.makeText(MainActivity.this, "Updated", Toast.LENGTH_SHORT).show();
                 mAdapter.notifyDataSetChanged();
+                daysListRv.smoothScrollToPosition(tillToday.size()-1);
             }
         });
 

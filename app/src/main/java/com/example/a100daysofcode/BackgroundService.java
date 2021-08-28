@@ -43,7 +43,7 @@ public class BackgroundService extends Service {
 
         updateNotification(0);
         retrieveData();
-        timer = new CountDownTimer(30000, 1000) {
+        timer = new CountDownTimer(86400000, 1000) {
             @Override
             public void onTick(long l) {
                 localIntent.setAction("counter");
@@ -106,7 +106,7 @@ public class BackgroundService extends Service {
         Notification notification[] = {new NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("Day "+String.valueOf(day+1))
                 .setContentText("Who wants to be GOD when you can be a PROGRAMMER")
-                .setSmallIcon(R.drawable.ic_ac)
+                .setSmallIcon(R.drawable.welcome_icon)
                 .setContentIntent(intent)
                 .build()
         };

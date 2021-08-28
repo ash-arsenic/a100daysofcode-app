@@ -2,4 +2,5 @@
     <string name="app_name">100 Days Of Code</string>
     <string name="problem">A pallindrome is a string which has same appearance from beginning and from last
     Find all the strings which are pallindrome. The max length of string is 5 characters.</string>
+    <string name="my_name">FROM ARSENIC</string>
 </resources>
